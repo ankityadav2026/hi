@@ -1,0 +1,491 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #090009;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+
+/* ---------- SCREENS ---------- */
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.05);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+/* ---------- BACKGROUND ---------- */
+
+.screen::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 50% 30%,
+        rgba(255, 40, 100, 0.18),
+        transparent 40%);
+
+    pointer-events: none;
+}
+
+
+/* ---------- OPENING ---------- */
+
+.opening {
+    text-align: center;
+    z-index: 2;
+
+    animation: appear 2s ease;
+}
+
+.small-text {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+}
+
+.opening h1 {
+    font-size: clamp(55px, 10vw, 110px);
+    line-height: 0.95;
+
+    font-weight: normal;
+
+    text-shadow:
+        0 0 20px rgba(255, 50, 100, .5);
+}
+
+.opening h1 span {
+    color: #ff6f9f;
+}
+
+.opening p {
+    margin-top: 25px;
+    font-size: 20px;
+    opacity: .75;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+button {
+    margin-top: 35px;
+
+    padding: 15px 30px;
+
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50px;
+
+    background: rgba(255, 70, 120, .15);
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background: #ff4f81;
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 10px 40px rgba(255, 50, 100, .35);
+}
+
+
+/* ---------- CARDS ---------- */
+
+.card {
+    position: relative;
+
+    width: min(90%, 600px);
+
+    padding: 60px 40px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.4);
+
+    z-index: 2;
+}
+
+.card h2 {
+    font-size: 38px;
+    font-weight: normal;
+}
+
+.card p {
+    margin-top: 18px;
+    opacity: .7;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.emoji {
+    font-size: 60px;
+    margin-bottom: 25px;
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+
+/* ---------- PHOTOS ---------- */
+
+.photo-section {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    z-index: 2;
+}
+
+.photo-section h2 {
+    font-size: 38px;
+    font-weight: normal;
+}
+
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+.photo {
+    width: 250px;
+    height: 320px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    transform:
+        rotate(-3deg);
+
+    transition: .5s;
+}
+
+.photo:nth-child(2) {
+    transform: rotate(3deg);
+}
+
+.photo:nth-child(3) {
+    transform: rotate(-2deg);
+}
+
+.photo:hover {
+    transform:
+        translateY(-15px)
+        rotate(0deg)
+        scale(1.04);
+
+    box-shadow:
+        0 20px 50px rgba(255,60,120,.25);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ---------- LETTER ---------- */
+
+.letter {
+    width: min(90%, 700px);
+
+    padding: 55px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border-radius: 25px;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+.letter h2 {
+    font-size: 45px;
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+.letter p {
+    font-size: 18px;
+    line-height: 1.8;
+
+    margin: 18px 0;
+
+    opacity: .8;
+}
+
+.letter h3 {
+    color: #ff719e;
+
+    font-size: 25px;
+
+    margin-top: 30px;
+}
+
+
+/* ---------- CHOICES ---------- */
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.choices button {
+    margin-top: 20px;
+}
+
+#surpriseText {
+    min-height: 60px;
+    color: #ff82a9;
+}
+
+
+/* ---------- FINAL ---------- */
+
+.final {
+    text-align: center;
+
+    width: min(90%, 700px);
+
+    z-index: 2;
+
+    animation: appear 2s ease;
+}
+
+.big-heart {
+    font-size: 100px;
+
+    animation:
+        heartbeat 1.5s infinite;
+
+    filter:
+        drop-shadow(0 0 30px #ff477e);
+}
+
+.final h1 {
+    font-size: 55px;
+    font-weight: normal;
+}
+
+.final p {
+    font-size: 20px;
+    opacity: .7;
+
+    margin-top: 20px;
+}
+
+.final-message {
+    line-height: 1.7;
+}
+
+.final h2 {
+    color: #ff719e;
+    margin-top: 30px;
+}
+
+.signature {
+    margin-top: 40px;
+    opacity: .5;
+    font-style: italic;
+}
+
+
+/* ---------- HEARTS ---------- */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -30px;
+
+    font-size: 20px;
+
+    animation:
+        floatHeart linear forwards;
+
+    opacity: .7;
+}
+
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+@keyframes floatHeart {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width: 700px) {
+
+    .photos {
+        gap: 10px;
+    }
+
+    .photo {
+        width: 30vw;
+        height: 220px;
+    }
+
+    .card {
+        padding: 40px 25px;
+    }
+
+    .card h2 {
+        font-size: 28px;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter h2 {
+        font-size: 35px;
+    }
+
+    .final h1 {
+        font-size: 40px;
+    }
+
+}
+.hidden {
+    display: none;
+}
